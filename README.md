@@ -20,9 +20,11 @@ TourSafe's offline communication strategy employs a multi-layered mesh network c
 
 ### Team 26
 
-R Abinav - ME23B1004
-Harish Kumar - EC23B1017
-Uday Y - EC23B1007
-Chris Jason - CS23B1012
-Sree Balaji - EC23B1041
-Monissh Balaji - EC23B1040
+| Name | Roll Number |
+|------|-------------|
+| R Abinav | ME23B1004 |
+| Harish Kumar | EC23B1017 |
+| Uday Y | EC23B1007 |
+| Chris Jason | CS23B1012 |
+| Sree Balaji | EC23B1041 |
+| Monissh Balaji | EC23B1040 |

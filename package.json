@@ -1,0 +1,26 @@
+{
+  "name": "toursafe-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "clean": "turbo run clean",
+    "mobile": "turbo run dev --filter=mobile",
+    "backend": "turbo run dev --filter=backend"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1",
+    "turbo": "^2.8.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

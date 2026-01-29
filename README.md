@@ -1,0 +1,28 @@
+## Toursafe - A hybrid p2p emergency response system
+
+### What is toursafe?
+
+TourSafe is a hybrid peer-to-peer emergency response platform that creates a decentralized safety network for tourists in remote and connectivity-challenged environments. The system combines a React Native mobile application with optional wearable sensors (ESP32-based devices with IMU and PPG sensors) to provide autonomous emergency detection and instant alert propagation. Unlike traditional centralized emergency systems that rely on stable internet connectivity and manual SOS triggers, TourSafe leverages Kademlia Distributed Hash Table (DHT) for serverless peer-to-peer communication, enabling sub-3-second emergency alerts to nearby users, volunteers, and rescue personnel even in completely offline scenarios. The platform integrates AI-powered anomaly detection using LSTM networks to predict risks from user trajectories and sensor data, while cryptographically-signed incident logging with zone-based GPS precision ensures tamper-proof records that only reveal exact locations during active emergencies, maintaining privacy while enabling rapid rescue response.
+
+### Why toursafe?
+
+Current emergency response systems for tourists suffer from critical vulnerabilities: centralized architectures create single points of failure, stable internet connectivity requirements render them useless in remote areas, and manual trigger mechanisms fail when tourists are incapacitated or unconscious. Statistics indicate 15-20 minute average response delays in tourist emergencies, with higher fatality rates in remote terrains where traditional cellular infrastructure is absent or unreliable. Tourists face unique vulnerabilities—unfamiliarity with local geography, language barriers limiting communication with local rescue services, lack of established social networks for immediate help, and exposure to high-risk activities like trekking, adventure sports, and exploration of isolated areas. The COVID-19 pandemic further exposed the fragility of centralized systems when overwhelmed infrastructure led to complete service breakdowns. These systemic failures demand a paradigm shift toward decentralized, resilient architectures that function independently of internet availability and can autonomously detect emergencies without requiring conscious user intervention.
+
+### How are we solving it?
+
+TourSafe's solution architecture employs a three-tier approach: autonomous detection, decentralized propagation, and secure logging. The mobile application fuses data from smartphone sensors (accelerometer, gyroscope, GPS) with optional wearable inputs (IMU for fall detection, PPG for heart rate anomalies) through an LSTM-based anomaly detection model trained on emergency trajectory patterns and physiological signals. When an anomaly is detected or manual SOS is triggered, the system activates a Kademlia DHT network where each user device acts as a node in a geo-clustered peer network, routing encrypted emergency packets in O(log n) time complexity to the nearest available responders. For complete offline scenarios, Bluetooth Low Energy mesh networking creates local area networks enabling alert propagation within 100-meter radius clusters—critical for mountainous terrain or disaster zones. All incidents are logged locally with cryptographic signatures and synced to redundant servers when connectivity is restored, using privacy-preserving mechanisms: normal operation stores only zone-level GPS coordinates (5km radius), switching to precise coordinates exclusively during active SOS events, with HMAC-based tamper detection ensuring data integrity and GDPR compliance throughout the incident lifecycle.
+
+### Offline Communication Arch
+
+TourSafe's offline communication strategy employs a multi-layered mesh network combining smartphone-based Bluetooth Low Energy (BLE) mesh with extended-range LoRa modules integrated into the wearable devices for remote area coverage. In scenarios where cellular infrastructure is unavailable, the mobile app creates local BLE mesh clusters (100-meter radius per hop) enabling alert propagation between nearby tourists and volunteers through multi-hop routing—each phone acts as a relay node, extending the emergency signal's reach exponentially with each additional user in the network. For true remote areas like mountain peaks or deep wilderness where even tourist clustering is sparse, the ESP32 wearables are equipped with SX1276 LoRa transceivers operating on 868/915 MHz ISM bands, providing direct device-to-device communication ranges of 2-5 kilometers in open terrain and 500-1500 meters in obstructed environments. When an emergency is detected, the wearable broadcasts a low-bandwidth LoRa packet (containing encrypted user ID, GPS coordinates, and emergency type) that can be received by any other TourSafe wearable or strategically positioned LoRa gateway nodes at popular trailheads, ranger stations, or lodges—these gateways buffer alerts and forward them to rescue services when backhaul connectivity (satellite, cellular, or WiFi) becomes available. This hybrid architecture ensures that even a solo hiker 3 kilometers from the nearest person can still propagate an SOS through LoRa to distant nodes, while groups of tourists in moderately remote areas benefit from the faster, energy-efficient BLE mesh that leverages crowd density, creating a resilient communication fabric that degrades gracefully based on user density and terrain rather than failing completely like traditional cellular-dependent systems.
+
+## Built By
+
+### Team 26
+
+R Abinav - ME23B1004
+Harish Kumar - EC23B1017
+Uday Y - EC23B1007
+Chris Jason - CS23B1012
+Sree Balaji - EC23B1041
+Monissh Balaji - EC23B1040
